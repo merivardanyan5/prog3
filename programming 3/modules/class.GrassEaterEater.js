@@ -1,10 +1,10 @@
-class GrassEaterEater {
+var LiveForm =require("./LiveForm");
+var random =require('./random');
+
+module.exports = class Gishatich extends LiveForm {
     constructor(x, y) {
-        this.x = x;
-        this.y = y;
-        this.multiply = 0;
-        this.energy = 6;
-        this.directions = [];
+        super(x, y);
+        this.live = 10;
     }
 
     //շրջապատի հետազոտության մատրիցը

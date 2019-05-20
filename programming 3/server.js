@@ -4,6 +4,7 @@
 //! Setting global arrays  --  START
 grassArr = [];
 grassEaterArr = [];
+gishatichArr =[];
 matrix = [];
 //! Setting global arrays  -- END
 
@@ -44,7 +45,7 @@ function matrixGenerator(matrixSize, grass, grassEater, grassEaterEater, waterAr
         matrix[customY][customX] = 5;
     }
 }
-matrixGenerator(10, 5, 1);
+matrixGenerator(10, 5, 1, 2);
 //! Creating MATRIX -- END
 
 
@@ -52,6 +53,7 @@ matrixGenerator(10, 5, 1);
 //! Requiring modules  --  START
 var Grass = require("./modules/Grass.js");
 var GrassEater = require("./modules/GrassEater.js");
+var Gishatich =require('./modules/gishatich.js');
 //! Requiring modules  --  END
 
 
@@ -73,9 +75,9 @@ server.listen(3000);
 function creatingObjects() {
     for (var y = 0; y < matrix.length; y++) {
         for (var x = 0; x < matrix[y].length; x++) {
-            if (matrix[y][x] == 2) {
-                var grassEater = new GrassEater(x, y);
-                grassEaterArr.push(grassEater);
+            if (matrix[y][x] == 3) {
+                var gishatich = new Gishatich(x, y);
+                gishatichArr.push(Gishatich);
             } else if (matrix[y][x] == 1) {
                 var grass = new Grass(x, y);
                 grassArr.push(grass);
@@ -98,6 +100,12 @@ function game() {
             grassEaterArr[i].eat();
         }
     }
+    if (gishatichArr[0] !== undefined) {
+        for (var i in gishatichArr) {
+            gishatichArr[i].eat();
+        }
+    }
+
 
     //! Object to send
     let sendData = {
